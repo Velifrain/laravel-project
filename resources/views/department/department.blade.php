@@ -9,7 +9,7 @@
                 <h1>Отделы</h1>
             </div>
             <div class="col-6 pt-2">
-                <a href="{{ route('create_dep') }}"><button class="btn btn-success float-right">Добавить Отдел</button></a>
+                <a href=""><button class="btn btn-success float-right">Добавить Отдел</button></a>
             </div>
 
         </div>

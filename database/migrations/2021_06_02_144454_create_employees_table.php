@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->string('sex');
             $table->integer('salary');
+            $table->timestamps();
         });
     }
 

@@ -12,7 +12,7 @@
                     <a class="nav-link" href="{{ route('employee') }}">Сотрудники</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="{{ route('department') }}">Отделы</a>
+                    <a class="nav-link"  href="/department">Отделы</a>
                 </li>
             </ul>
         </div>

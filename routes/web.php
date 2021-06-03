@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::get('/employee', function () {
     return view('employee');
@@ -18,12 +17,11 @@ Route::get('/employee/create', function () {
 
 Route::post('/employee/create/submit', [EmployeeController::class, 'create'])->name('create_em-form');
 
-Route::get('/department', function () {
-    return view('department');
-})->name('department');
 
-Route::get('/department/create', function () {
-    return view('include/create_department');
-})->name('create_dep');
+Route::resource('/department', DepartmentController::class);
 
-Route::post('/department/create/submit', [DepartmentController::class, 'create'])->name('create_dep-form');
+//Route::get('/department/create', function () {
+//    return view('include/create_department');
+//})->name('create_dep');
+
+//Route::post('/department/create/submit', [DepartmentController::class, 'create'])->name('create_dep-form');
