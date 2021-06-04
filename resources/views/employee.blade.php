@@ -35,9 +35,9 @@
                 <td>male</td>
                 <td>10000</td>
                 <td>Продажи</td>
-                <td colspan="3" class="float-right">
-                    <a href="#"><button class="btn btn-primary">Редак.</button></a>
-                    <a href="#"><button class="btn btn-danger">Удалить</button></a>
+                <td>
+                    <a href="#" class="btn btn-primary" role="button">Редак.</a>
+                    <a href="#" class="btn btn-danger" role="button">Удалить</a>
                 </td>
             </tr>
             </tbody>

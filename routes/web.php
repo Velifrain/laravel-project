@@ -19,9 +19,3 @@ Route::post('/employee/create/submit', [EmployeeController::class, 'create'])->n
 
 
 Route::resource('/department', DepartmentController::class);
-
-//Route::get('/department/create', function () {
-//    return view('include/create_department');
-//})->name('create_dep');
-
-//Route::post('/department/create/submit', [DepartmentController::class, 'create'])->name('create_dep-form');

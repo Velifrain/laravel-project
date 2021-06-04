@@ -56,13 +56,11 @@
             </div>
             <div class="form-group">
                     <label for="exampleFormControlSelect1">Отдел</label>
+                @foreach($depatments as $department)
                     <select class="form-control" name="department" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>{{ isset($department) ? $department->name_department : null }}</option>
                     </select>
+                @endforeach
             </div>
                 <button class="btn btn-primary" type="submit">Создать</button>
         </form>
