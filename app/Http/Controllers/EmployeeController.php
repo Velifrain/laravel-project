@@ -2,23 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
-    public function create(EmployeeRequest $request){
-//        $validated = $request->validated();
-        $employee = new Employee();
-        $employee->name = $request->input('name');
-        $employee->first_name = $request->input('first_name');
-        $employee->last_name = $request->input('last_name');
-        $employee->sex = $request->input('sex');
-        $employee->salary = $request->input('salary');
+    public function index(){
+        $employees = Employee::get();
+        return view('employee.index', compact('employees'));
+    }
 
-        $employee->save();
+    public function create(){
+        $departments = DB::select('SELECT * FROM departments');
+        return view('employee.create', compact('departments'));
+    }
 
-        return redirect()->route('/employee');
+    /**
+     * @param EmployeeRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(EmployeeRequest $request){
+        dd($request);
+        Employee::create($request->only(['name', 'first_name', 'last_name', 'sex', 'salary']));
+        return redirect()->route('employee.index')->with('success', 'Сотрудник успешно добавлен');
+    }
+
+    public function edit(){
+        dd(12345);
+    }
+
+    /**
+     * @param Employee $employee
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Employee $employee){
+        $employee->delete();
+        return redirect()->route('employee.index');
     }
 }

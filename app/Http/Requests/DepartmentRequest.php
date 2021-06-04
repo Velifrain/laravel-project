@@ -27,4 +27,13 @@ class DepartmentRequest extends FormRequest
             'name_department' => 'required|min:5|max:70'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name_department.required' => 'Поле название отдела являеться обязательным',
+            'name_department.min' => 'Поле название отдела долно быть больше 5 символов',
+            'name_department.max' => 'Поле название отдела не должно превышать больше 70 символов',
+        ];
+    }
 }

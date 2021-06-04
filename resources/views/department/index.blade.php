@@ -6,17 +6,17 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
+                <div class="float-left">
                     <h1>Отделы</h1>
                 </div>
-                <div class="pull-right">
-                    <a href="{{ route('department.create') }}" class="btn btn-success" role="button">Добавить
-                        Отдел</a>
+                <div class="float-right mt-2">
+                    <a href="{{ route('department.create') }}" class="btn btn-success "
+                       role="button">Добавить Отдел</a>
                 </div>
             </div>
         </div>
         @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success py-5">
                 <p>{{ $message }}</p>
             </div>
         @endif

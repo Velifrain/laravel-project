@@ -9,7 +9,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('employee') }}">Сотрудники</a>
+                    <a class="nav-link" href="{{ route('employee.index') }}">Сотрудники</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="{{ route('department.index') }}">Отделы</a>

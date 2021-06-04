@@ -26,10 +26,9 @@ class EmployeeRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:50',
             'first_name' => 'required|min:2|max:50',
-            'last_name' => 'required|min:2|max:50',
-            'sex' => 'required',
-            'salary' => 'required|regex:/[^a-zA-Z]+/',
-            'department' => 'required|min:2',
+            'last_name' => 'min:2|max:50',
+            'salary' => 'integer|regex:/[^a-zA-Z]+/',
+            'department' => 'required',
         ];
     }
 
@@ -37,9 +36,15 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'name.required' => 'Поле имя являеться обязательным',
+            'name.min' => 'Поле имя долно быть больше 2х символов',
+            'name.max' => 'Поле имя не должно превышать больше 50 символов',
             'first_name.required' => 'Поле фамилия являеться обязательным',
-            'last_name.required' => 'Поле отчество являеться обязательным',
+            'first_name.min' => 'Поле фамилия долно быть больше 2х символов',
+            'first_name.max' => 'Поле фамилия не должно превышать больше 50 символов',
+            'last_name.min' => 'Поле отчество долно быть больше 2х символов',
+            'last_name.max' => 'Поле отчество е должно превышать больше 50 символов',
             'salary.required' => 'Поле заробатная плата являеться обязательным',
+            'salary.integer' => 'Поле заробатная плата может быть только числом',
             'department.required' => 'Поле отдел являеться обязательным',
         ];
     }
