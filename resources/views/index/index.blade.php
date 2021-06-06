@@ -8,21 +8,24 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col" colspan="2"> </th>
-                 @foreach($departments as $dep)
+                <th scope="col" colspan="1"> </th>
+                @foreach($employees as $emp)
+                    <th scope="col">{{ $emp->name_department }}</th>
                     <!-- Шапка названия отделов -->
-                    <th scope="col">{{ $dep->name_department }}</th>
                 @endforeach
             </tr>
             </thead>
             <tbody>
             @foreach($employees as $emp)
-            <tr>
-                <td>{{ $emp->id }}</td>
-                <td>{{ $emp->name }}</td>
-                <td>{{ $emp->departments }}</td>
+                <tr>
+                    <td>{{ $emp->name }}</td>
+                    @foreach($employees as $emp)
+                    <td>@if($emp->name_department == $emp->name)  {{ $emp->id }} @endif</td>
+                    <!-- Шапка названия отделов -->
+
+                    @endforeach
             </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>

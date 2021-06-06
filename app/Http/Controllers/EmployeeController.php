@@ -22,6 +22,10 @@ class EmployeeController extends Controller
         return view('employee.index', compact('employees', 'departments'));
     }
 
+    /**
+     * @param Employee $employee
+     * @return Application|Factory|View
+     */
     public function create(Employee $employee){
         $departments = DB::table('departments')->get();
         return view('employee.create', compact('departments', 'employee'));
@@ -34,7 +38,6 @@ class EmployeeController extends Controller
     public function store(EmployeeRequest $request): RedirectResponse
     {
         $emp = Employee::create($request->only(['name','first_name', 'last_name', 'sex', 'salary']));
-        // Присоединяем id отделов к таблице сотрудников
         $emp->departments()->attach($request->department_id);
         return redirect()->route('employee.index')->with('success', 'Сотрудник успешно добавлен');
     }
@@ -44,7 +47,8 @@ class EmployeeController extends Controller
      * @return Application|Factory|View
      */
     public function edit(Employee $employee){
-        $departments = Department::all();
+        $departments = DB::table('departments')->get();
+        //$departments = Department::all();
         return view('employee.edit', compact('employee', 'departments'));
     }
 
@@ -54,11 +58,8 @@ class EmployeeController extends Controller
      * @return RedirectResponse
      */
     public function update(EmployeeRequest $request, Employee $employee){
-        //dd($request);
-        // department_id (ид) - отдел
-        //
         $employee->update($request->only(['name', 'first_name', 'last_name', 'sex', 'salary']));
-        $employee->departments()->sync($request->input(['name_department']));
+        $employee->departments()->sync($request->input(['department_id']));
 
         return redirect()->route( 'employee.index')->with('success', 'Редактирование добавлено');
     }

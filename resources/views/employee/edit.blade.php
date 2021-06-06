@@ -37,8 +37,8 @@
                 <div class="form-group">
                     <label class="col-form-label" for="sex">Пол</label>
                     <select class="form-control" id="sex" name="sex">
-                        <option value="{{ $employee->sex }}"{{ $employee->sex == "М" ? 'selected' : ''}}>М</option>
-                        <option value="{{ $employee->sex }}"{{ $employee->sex == "Ж" ? 'selected' : ''}}>Ж</option>
+                        <option value="М"{{ $employee->sex == "М" ? 'selected' : ''}}>М</option>
+                        <option value="Ж"{{ $employee->sex == "Ж" ? 'selected' : ''}}>Ж</option>
                     </select>
                 </div>
                 <div class="form-group">
