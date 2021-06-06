@@ -15,11 +15,17 @@
                 </div>
             </div>
         </div>
-        @if ($message = Session::get('success'))
+
+        @if ( true === Session::get('success'))
             <div class="alert alert-success py-5">
-                <p>{{ $message }}</p>
+                <p>{{ Session::get('message') }}</p>
+            </div>
+        @elseif ( false === Session::get('success'))
+            <div class="alert alert-danger py-5">
+                <p>{{ Session::get('message') }}</p>
             </div>
         @endif
+
         <table class="table mt-5">
             <thead>
 
@@ -35,8 +41,9 @@
             @foreach($departments as $department)
                 <tr>
                     <td>{{ $department->name_department }}</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>{{ $department->count_em }}</td>
+{{--                    <td>{{ $department->employees }}</td>--}}
+                    <td>{{ $department->max_s }}</td>
                     <td>
                         <form action="{{ route('department.destroy',$department->id) }}" method="POST">
 
@@ -47,8 +54,6 @@
 
                             <button type="submit" class="btn btn-danger">Удалить</button>
                         </form>
-{{--                        <a href="{{ route('department.edit', $department) }}" class="btn btn-primary">Редак.</a>--}}
-{{--                        <a href="#" class="btn btn-danger">Удалить</a>--}}
                     </td>
                 </tr>
             @endforeach

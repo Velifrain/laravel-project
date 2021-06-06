@@ -25,7 +25,6 @@
         <table class="table mt-5">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Имя</th>
                 <th scope="col">Фамилия</th>
                 <th scope="col">Отчество</th>
@@ -43,13 +42,18 @@
                 <td>{{ $employee->last_name }}</td>
                 <td>{{ $employee->sex }}</td>
                 <td>{{ $employee->salary }}</td>
-                <td>Название отдела должно быть через ","</td>
+                <td>{{ $employee->departments->implode('name_department', ',') }}</td>
+{{--                <td>{{ $employee->department->implode('name_department', ',') }}</td>--}}
                 <td>
-                    <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-primary" role="button">Редак.</a>
-                    <a href="#" class="btn btn-danger" role="button">Удалить</a>
+                    <form action="{{ route('employee.destroy',$employee->id) }}" method="POST">
+                        <a class="btn btn-primary" href="{{ route('employee.edit',$employee->id) }}">Редактировать</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
                 </td>
             </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
 

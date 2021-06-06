@@ -4,35 +4,25 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mt-5">Общая информация</h1>
+        <h1 class="my-5">Общая информация</h1>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col" colspan="2"> </th>
+                 @foreach($departments as $dep)
+                    <!-- Шапка названия отделов -->
+                    <th scope="col">{{ $dep->name_department }}</th>
+                @endforeach
             </tr>
             </thead>
             <tbody>
+            @foreach($employees as $emp)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{ $emp->id }}</td>
+                <td>{{ $emp->name }}</td>
+                <td>{{ $emp->departments }}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
