@@ -54,7 +54,7 @@
                     <select class="form-control @error('department_id') is-invalid @enderror" size="3" multiple
                             name="department_id[]" id="exampleFormControlSelect1">
                         @foreach($departments as $department)
-                            <option value="{{ $department->id }}">{{ $department->name_department }}</option>
+                            <option value="{{ $department->id }}" @if ($employee->id == $department->id) selected="selected" @endif>{{ $department->name_department }}</option>
                         @endforeach
                     </select>
                     @error('department_id')

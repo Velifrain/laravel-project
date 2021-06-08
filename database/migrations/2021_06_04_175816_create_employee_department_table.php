@@ -15,7 +15,7 @@ class CreateEmployeeDepartmentTable extends Migration
     {
         Schema::create('department_employee', function (Blueprint $table) {
             $table->foreignId('department_id')->constrained()->restrictOnDelete();
-            $table->foreignId('employee_id')->constrained();
+            $table->foreignId('employee_id')->constrained()->onDelete('cascade');
         });
     }
 

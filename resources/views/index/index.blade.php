@@ -8,24 +8,26 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col" colspan="1"> </th>
-                @foreach($employees as $emp)
-                    <th scope="col">{{ $emp->name_department }}</th>
-                    <!-- Шапка названия отделов -->
+                <th scope="col" colspan="1"></th>
+                @foreach( $departments as $deps)
+                    <th scope="col">{{ $deps->name_department }}</th>
                 @endforeach
             </tr>
             </thead>
             <tbody>
             @foreach($employees as $emp)
                 <tr>
-                    <td>{{ $emp->name }}</td>
-                    @foreach($employees as $emp)
-                    <td>@if($emp->name_department == $emp->name)  {{ $emp->id }} @endif</td>
-                    <!-- Шапка названия отделов -->
-
+                    <th scope="col">{{ $emp->name }}</th>
+                    @foreach($departments as $dep)
+                        <td> @if(str_contains($emp->combine_dep, $dep->name_department))
+                                {{ '✔' }}
+                            @else
+                                {{ '-' }}
+                            @endif
+                        </td>
                     @endforeach
-            </tr>
-                @endforeach
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

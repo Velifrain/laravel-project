@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -10,15 +9,14 @@ class IndexController extends Controller
     public function index(){
 
         $employees = DB::table('employees')
-        ->select('employees.id', 'employees.name', 'departments.name_department', 'departments.id')
-            ->join('department_employee', 'employees.id', '=', 'department_employee.employee_id')
-            ->join('departments', 'department_employee.department_id', '=', 'departments.id')
-            ->groupBy('employees.id', 'departments.id')
-            ->distinct('employees.id')
+        ->select('employees.id', DB::raw("CONCAT(employees.name,' ',employees.first_name) AS name"),
+            DB::raw("string_agg(departments.name_department, ', ' ORDER by departments.name_department) as combine_dep"))
+            ->leftJoin('department_employee', 'employees.id', '=', 'department_employee.employee_id')
+            ->leftjoin('departments', 'department_employee.department_id', '=', 'departments.id')
+            ->groupBy('employees.id')
             ->get();
-        $departments = Department::with('employees')->get();
-       // $employees = Employee::all();
 
-        return view('index.index', compact( 'employees', 'departments'));
+        $departments = DB::table('departments')->get();
+        return view('index.index', compact('departments','employees'));
     }
 }
