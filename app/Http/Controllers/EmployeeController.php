@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -48,7 +49,6 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee){
         $departments = DB::table('departments')->get();
-        //$departments = Department::all();
         return view('employee.edit', compact('employee', 'departments'));
     }
 
@@ -57,10 +57,10 @@ class EmployeeController extends Controller
      * @param Employee $employee
      * @return RedirectResponse
      */
-    public function update(EmployeeRequest $request, Employee $employee){
+    public function update(EmployeeRequest $request, Employee $employee): RedirectResponse
+    {
         $employee->update($request->only(['name', 'first_name', 'last_name', 'sex', 'salary']));
         $employee->departments()->sync($request->input(['department_id']));
-
         return redirect()->route( 'employee.index')->with('success', 'Редактирование добавлено');
     }
 
