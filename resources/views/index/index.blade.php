@@ -19,10 +19,13 @@
                 <tr>
                     <th scope="col">{{ $emp->name }}</th>
                     @foreach($departments as $dep)
-                        <td> @if(str_contains($emp->combine_dep, $dep->name_department))
-                                {{ '✔' }}
-                            @else
-                                {{ '-' }}
+{{--                        <td>{{ dd($emp->combine_dep) }}</td>--}}
+                        <td> @if($emp->combine_dep)
+                                @if(str_contains($emp->combine_dep, $dep->name_department))
+                                    {{ '✔' }}
+                                @else
+                                    {{ '-' }}
+                                @endif
                             @endif
                         </td>
                     @endforeach

@@ -17,6 +17,7 @@
 - использовать команду `docker-compose up exec php composer install`
 - `docker-compose exec php bash` 
 - `php artisan migrate`
+- `php artisan db:seed`
 
 ## Как использовать
 

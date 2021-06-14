@@ -16,7 +16,7 @@ class IndexController extends Controller
     public function index(){
 
         $employees = DB::table('employees')
-        ->select('employees.id', DB::raw("CONCAT(employees.name,' ',employees.first_name) AS name"),
+        ->select('employees.id', DB::raw("CONCAT(employees.name,' ',employees.surname) AS name"),
             DB::raw("string_agg(departments.name_department, ', ' ORDER by departments.name_department) as combine_dep"))
             ->leftJoin('department_employee', 'employees.id', '=', 'department_employee.employee_id')
             ->leftjoin('departments', 'department_employee.department_id', '=', 'departments.id')

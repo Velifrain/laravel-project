@@ -27,8 +27,8 @@ class EmployeeRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'department_id' => 'required',
-            'first_name' => 'required|max:50',
-            'last_name' => 'max:50',
+            'surname' => 'required|max:50',
+            'patronymic' => 'max:50',
             'salary' => 'integer|regex:/[^a-zA-Z]+/',
 
         ];
@@ -40,9 +40,9 @@ class EmployeeRequest extends FormRequest
             'name.required' => 'Поле имя являеться обязательным',
             'name.max' => 'Поле имя не должно превышать больше 50 символов',
             'department_id.required' => 'Поле отдел являеться обязательным',
-            'first_name.required' => 'Поле фамилия являеться обязательным',
-            'first_name.max' => 'Поле фамилия не должно превышать больше 50 символов',
-            'last_name.max' => 'Поле отчество е должно превышать больше 50 символов',
+            'surname.required' => 'Поле фамилия являеться обязательным',
+            'surname.max' => 'Поле фамилия не должно превышать больше 50 символов',
+            'patronymic.max' => 'Поле отчество е должно превышать больше 50 символов',
             'salary.integer' => 'Поле заробатная плата может быть только числом',
 
         ];

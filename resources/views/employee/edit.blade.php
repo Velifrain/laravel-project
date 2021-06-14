@@ -20,17 +20,17 @@
                 </div>
                 <div class="form-group">
                     <label for="validationCustom02" class="form-label">Фамилия</label>
-                    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-                           name="first_name" value="{{ old('first_name', isset($employee) ? $employee->first_name : null) }}" id="validationCustom02" placeholder="Введите фамилия">
-                    @error('first_name')
+                    <input type="text" class="form-control @error('surname') is-invalid @enderror"
+                           name="surname" value="{{ old('surname', isset($employee) ? $employee->surname : null) }}" id="validationCustom02" placeholder="Введите фамилия">
+                    @error('surname')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Отчество</label>
-                    <input type="text" class="form-control @error('last_name') is-invalid @enderror"
-                           name="last_name" value="{{ old('last_name', isset($employee) ? $employee->last_name : null) }}" id="validationCustomUsername" placeholder="Введите отчество">
-                    @error('last_name')
+                    <input type="text" class="form-control @error('patronymic') is-invalid @enderror"
+                           name="patronymic" value="{{ old('patronymic', isset($employee) ? $employee->patronymic : null) }}" id="validationCustomUsername" placeholder="Введите отчество">
+                    @error('patronymic')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Отдел</label>
-                    <select class="form-control @error('department_id') is-invalid @enderror" size="3" multiple
+                    <select class="form-control @error('department_id') is-invalid @enderror" size="6" multiple
                             name="department_id[]" id="exampleFormControlSelect1">
                         @foreach($departments as $department)
                             <option value="{{ $department->id }}">{{ $department->name_department }}</option>

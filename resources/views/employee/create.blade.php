@@ -17,17 +17,17 @@
                 </div>
                 <div class="form-group">
                     <label for="validationCustom02" class="form-label">Фамилия</label>
-                    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-                           name="first_name" value="{{ old('first_name') }}" id="validationCustom02" placeholder="Введите фамилия">
-                    @error('first_name')
+                    <input type="text" class="form-control @error('surname') is-invalid @enderror"
+                           name="surname" value="{{ old('surname') }}" id="validationCustom02" placeholder="Введите фамилия">
+                    @error('surname')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Отчество</label>
-                    <input type="text" class="form-control @error('last_name') is-invalid @enderror"
-                           name="last_name" value="{{ old('last_name') }}" id="validationCustomUsername" placeholder="Введите отчество">
-                    @error('last_name')
+                    <input type="text" class="form-control @error('patronymic') is-invalid @enderror"
+                           name="patronymic" value="{{ old('patronymic') }}" id="validationCustomUsername" placeholder="Введите отчество">
+                    @error('patronymic')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

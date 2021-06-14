@@ -22,7 +22,7 @@ class DepartmentFactory extends Factory
     public function definition() :array
     {
         return [
-            'name_department' => $this->faker->unique()->name,
+            'name_department' => $this->faker->unique()->firstName,
         ];
     }
 }

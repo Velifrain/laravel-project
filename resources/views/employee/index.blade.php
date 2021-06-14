@@ -34,8 +34,8 @@
             @foreach($employees as $employee)
                 <tr>
                     <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->first_name }}</td>
-                    <td>{{ $employee->last_name }}</td>
+                    <td>{{ $employee->surname }}</td>
+                    <td>{{ $employee->patronymic  }}</td>
                     <td>{{ $employee->sex }}</td>
                     <td>${{ $employee->salary }}</td>
                     <td>{{ $employee->departments->implode('name_department', ',') }}</td>

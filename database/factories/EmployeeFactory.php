@@ -22,9 +22,9 @@ class EmployeeFactory extends Factory
     public function definition() :array
     {
         return [
-            'name' => $this->faker->name,
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
+            'name' => $this->faker->firstName,
+            'surname' => $this->faker->firstName,
+            'patronymic' => $this->faker->lastName,
             'sex' => $this->faker->word,
             'salary' => $this->faker->buildingNumber,
         ];
