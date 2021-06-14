@@ -16,11 +16,7 @@
             </div>
         </div>
 
-        @if($message = Session::get('success'))
-            <div class="alert alert-success py-5">
-                {{ $message }}
-            </div>
-        @endif
+        @include('include.flash-message')
 
         <table class="table mt-5">
             <thead>

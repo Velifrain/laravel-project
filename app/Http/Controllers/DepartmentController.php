@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DepartmentRequest;
 use App\Models\Department;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -41,8 +42,10 @@ class DepartmentController extends Controller
     public function store(DepartmentRequest $request): RedirectResponse
     {
         Department::create($request->only(['name_department']));
-        return redirect()->route('department.index')->with('message', 'Отдел добавлен')
-            ->with('success', true);
+        return redirect()->route('department.index')
+        ->with('message', 'Отдел добавлен')
+        ->with('success', true);
+
     }
 
     /**
@@ -64,15 +67,16 @@ class DepartmentController extends Controller
     {
         $department->update($request->only(['name_department']));
         return redirect()->route('department.index')
-            ->with('message','Отдел редактирован успешно');
+            ->with('message', 'Отдел редактирован успешно')
+            ->with('success', true);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Department $department
+     * @return RedirectResponse
      */
-    public function destroy(Department $department): RedirectResponse
+    public function destroy(Department $department) : RedirectResponse
     {
-
 
         $message = 'Отдел удален успешно';
         $success = true;

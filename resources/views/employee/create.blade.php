@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label for="validationCustom01" class="form-label">Имя</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                           name="name" id="validationCustom01" placeholder="Введите имя">
+                           name="name" value="{{ old('name') }}" id="validationCustom01" placeholder="Введите имя">
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label for="validationCustom02" class="form-label">Фамилия</label>
                     <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-                           name="first_name" id="validationCustom02" placeholder="Введите фамилия">
+                           name="first_name" value="{{ old('first_name') }}" id="validationCustom02" placeholder="Введите фамилия">
                     @error('first_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Отчество</label>
                     <input type="text" class="form-control @error('last_name') is-invalid @enderror"
-                           name="last_name" id="validationCustomUsername" placeholder="Введите отчество">
+                           name="last_name" value="{{ old('last_name') }}" id="validationCustomUsername" placeholder="Введите отчество">
                     @error('last_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Заробатная плата</label>
                     <input type="text" class="form-control @error('salary') is-invalid @enderror"
-                           name="salary" id="validationCustomUsername">
+                           name="salary" value="{{ old('salary') }}" id="validationCustomUsername">
                     @error('salary')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

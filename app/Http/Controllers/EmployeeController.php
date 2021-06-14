@@ -61,7 +61,7 @@ class EmployeeController extends Controller
     {
         $employee->update($request->only(['name', 'first_name', 'last_name', 'sex', 'salary']));
         $employee->departments()->sync($request->input(['department_id']));
-        return redirect()->route( 'employee.index')->with('success', 'Редактирование добавлено');
+        return redirect()->route( 'employee.index')->with('info', 'Редактирование добавлено');
     }
 
     public function show(){}
@@ -73,6 +73,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee): RedirectResponse
     {
         $employee->delete();
-        return redirect()->route('employee.index');
+        return redirect()->route('employee.index')->with('success', 'Сотрудник удален');
     }
 }

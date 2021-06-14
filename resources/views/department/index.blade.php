@@ -26,7 +26,6 @@
             </div>
         @endif
 
-
         <table class="table mt-5">
             <thead>
 

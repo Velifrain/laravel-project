@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="validationCustom01" class="form-label">Имя</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                           name="name"  value="{{ $employee->name }}" id="validationCustom01" placeholder="Введите имя">
+                           name="name"  value="{{ old('name', isset($employee) ? $employee->name : null) }}" id="validationCustom01" placeholder="Введите имя">
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="validationCustom02" class="form-label">Фамилия</label>
                     <input type="text" class="form-control @error('first_name') is-invalid @enderror"
-                           name="first_name" value="{{ $employee->first_name }}" id="validationCustom02" placeholder="Введите фамилия">
+                           name="first_name" value="{{ old('first_name', isset($employee) ? $employee->first_name : null) }}" id="validationCustom02" placeholder="Введите фамилия">
                     @error('first_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Отчество</label>
                     <input type="text" class="form-control @error('last_name') is-invalid @enderror"
-                           name="last_name" value="{{ $employee->last_name }}" id="validationCustomUsername" placeholder="Введите отчество">
+                           name="last_name" value="{{ old('last_name', isset($employee) ? $employee->last_name : null) }}" id="validationCustomUsername" placeholder="Введите отчество">
                     @error('last_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label for="validationCustomUsername" class="form-label">Заробатная плата</label>
                     <input type="text" class="form-control @error('salary') is-invalid @enderror"
-                           name="salary" value="{{ $employee->salary }}" id="validationCustomUsername">
+                           name="salary" value="{{ old('salary', isset($employee) ? $employee->salary : null) }}" id="validationCustomUsername">
                     @error('salary')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -54,7 +54,7 @@
                     <select class="form-control @error('department_id') is-invalid @enderror" size="3" multiple
                             name="department_id[]" id="exampleFormControlSelect1">
                         @foreach($departments as $department)
-                            <option value="{{ $department->id }}" @if ($employee->id == $department->id) selected="selected" @endif>{{ $department->name_department }}</option>
+                            <option value="{{ $department->id }}">{{ $department->name_department }}</option>
                         @endforeach
                     </select>
                     @error('department_id')
