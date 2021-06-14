@@ -59,6 +59,11 @@
             @endforeach
             </tbody>
         </table>
+            <br>
+        <div class="float-right justify-content-center">
+            {!! $departments->links() !!}
+        </div>
+
     </div>
 
 @endsection

@@ -32,26 +32,29 @@
             </thead>
             <tbody>
             @foreach($employees as $employee)
-            <tr>
-                <td>{{ $employee->name }}</td>
-                <td>{{ $employee->first_name }}</td>
-                <td>{{ $employee->last_name }}</td>
-                <td>{{ $employee->sex }}</td>
-                <td>${{ $employee->salary }}</td>
-                <td>{{ $employee->departments->implode('name_department', ',') }}</td>
-{{--                <td>{{ $employee->department->implode('name_department', ',') }}</td>--}}
-                <td>
-                    <form action="{{ route('employee.destroy',$employee->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('employee.edit',$employee->id) }}">Редактировать</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>
-                </td>
-            </tr>
-                @endforeach
+                <tr>
+                    <td>{{ $employee->name }}</td>
+                    <td>{{ $employee->first_name }}</td>
+                    <td>{{ $employee->last_name }}</td>
+                    <td>{{ $employee->sex }}</td>
+                    <td>${{ $employee->salary }}</td>
+                    <td>{{ $employee->departments->implode('name_department', ',') }}</td>
+                    {{--                <td>{{ $employee->department->implode('name_department', ',') }}</td>--}}
+                    <td>
+                        <form action="{{ route('employee.destroy',$employee->id) }}" method="POST">
+                            <a class="btn btn-primary"
+                               href="{{ route('employee.edit',$employee->id) }}">Редактировать</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-
+        <div class="float-right justify-content-center">
+            {!! $employees->links() !!}
+        </div>
     </div>
 @endsection

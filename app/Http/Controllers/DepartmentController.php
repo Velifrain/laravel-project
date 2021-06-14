@@ -18,12 +18,14 @@ class DepartmentController extends Controller
      * @return Application|Factory|View
      */
     public function index(){
+
         $departments = DB::table('departments')
              ->select('departments.id', 'departments.name_department', DB::raw('count(employees.id) as count_em'), DB::raw('max(employees.salary) as max_s'))
              ->leftJoin('department_employee', 'departments.id', '=', 'department_employee.department_id')
              ->leftJoin('employees', 'employees.id', '=', 'department_employee.employee_id')
              ->groupBy('departments.id')
-             ->get();
+             ->paginate(10);
+
         return view('department.index', compact('departments'));
     }
 

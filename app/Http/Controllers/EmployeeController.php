@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      * @return Application|Factory|View
      */
     public function index(){
-        $employees = Employee::with('departments')->get();
+        $employees = Employee::with('departments')->paginate(10);
         $departments = Department::all();
         return view('employee.index', compact('employees', 'departments'));
     }
