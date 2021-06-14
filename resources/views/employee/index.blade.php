@@ -37,7 +37,7 @@
                 <td>{{ $employee->first_name }}</td>
                 <td>{{ $employee->last_name }}</td>
                 <td>{{ $employee->sex }}</td>
-                <td>{{ $employee->salary }}</td>
+                <td>${{ $employee->salary }}</td>
                 <td>{{ $employee->departments->implode('name_department', ',') }}</td>
 {{--                <td>{{ $employee->department->implode('name_department', ',') }}</td>--}}
                 <td>

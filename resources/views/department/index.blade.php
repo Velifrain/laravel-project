@@ -43,7 +43,7 @@
                     <td>{{ $department->name_department }}</td>
                     <td>{{ $department->count_em }}</td>
 {{--                    <td>{{ $department->employees }}</td>--}}
-                    <td>{{ $department->max_s }}</td>
+                    <td>${{ $department->max_s }}</td>
                     <td>
                         <form action="{{ route('department.destroy',$department->id) }}" method="POST">
 
