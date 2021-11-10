@@ -19,6 +19,7 @@
         @include('include.flash-message')
 
         <table class="table mt-5">
+            @if(count($employees) >= 1)
             <thead>
             <tr>
                 <th scope="col">Имя</th>
@@ -52,6 +53,9 @@
                 </tr>
             @endforeach
             </tbody>
+            @else
+                <p>Информация отсуствует</p>
+            @endif
         </table>
         <div class="float-right justify-content-center">
             {!! $employees->links() !!}

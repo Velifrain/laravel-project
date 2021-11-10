@@ -26,6 +26,7 @@ class DepartmentController extends Controller
              ->groupBy('departments.id')
              ->paginate(10);
 
+        //dd($size = $this->getFileCount());
         return view('department.index', compact('departments'));
     }
 
@@ -92,5 +93,21 @@ class DepartmentController extends Controller
         return redirect()->route('department.index')
             ->with('message',$message)
             ->with('success',$success);
+    }
+
+    function getFileCount() {
+
+        if ($handle = opendir('./laravel-project')) {
+
+            while (false !== ($entry = readdir($handle))) {
+
+                if ($entry != "." && $entry != "..") {
+                    echo "$entry <br>";
+
+                }
+            }
+
+            closedir($handle);
+        }
     }
 }

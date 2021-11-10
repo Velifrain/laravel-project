@@ -15,7 +15,6 @@
                 </div>
             </div>
         </div>
-
         @if ( true === Session::get('success'))
             <div class="alert alert-success py-5">
                 <p>{{ Session::get('message') }}</p>
@@ -27,6 +26,7 @@
         @endif
 
         <table class="table mt-5">
+            @if(count($departments) >= 1)
             <thead>
 
             <tr>
@@ -58,6 +58,9 @@
                 </tr>
             @endforeach
             </tbody>
+            @else
+            <p>Информация отсуствует</p>
+            @endif
         </table>
             <br>
         <div class="float-right justify-content-center">

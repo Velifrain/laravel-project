@@ -38,7 +38,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request): RedirectResponse
     {
-        $emp = Employee::create($request->only(['name','first_name', 'last_name', 'sex', 'salary']));
+        $emp = Employee::create($request->only(['name','surname', 'patronymic', 'sex', 'salary']));
         $emp->departments()->attach($request->department_id);
         return redirect()->route('employee.index')->with('success', 'Сотрудник успешно добавлен');
     }
