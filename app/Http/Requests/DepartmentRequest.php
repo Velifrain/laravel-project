@@ -8,28 +8,27 @@ use Illuminate\Foundation\Http\FormRequest;
 class DepartmentRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return string[]
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name_department' => 'unique:departments|required|min:5|max:70'
         ];
     }
 
-    public function messages()
+    /**
+     * @return string[]
+     */
+    public function messages(): array
     {
         return [
             'name_department.required' => 'Поле название отдела являеться обязательным',

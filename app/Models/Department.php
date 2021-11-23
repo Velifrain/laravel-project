@@ -12,14 +12,15 @@ class Department extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
         'name_department',
     ];
 
+    /**
+     * @param int $int
+     */
     public static function find(int $int)
     {
     }

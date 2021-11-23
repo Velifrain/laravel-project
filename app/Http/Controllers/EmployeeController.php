@@ -17,7 +17,8 @@ class EmployeeController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function index(){
+    public function index()
+    {
         $employees = Employee::with('departments')->paginate(10);
         $departments = Department::all();
         return view('employee.index', compact('employees', 'departments'));
@@ -27,7 +28,8 @@ class EmployeeController extends Controller
      * @param Employee $employee
      * @return Application|Factory|View
      */
-    public function create(Employee $employee){
+    public function create(Employee $employee)
+    {
         $departments = DB::table('departments')->get();
         return view('employee.create', compact('departments', 'employee'));
     }
@@ -38,7 +40,7 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request): RedirectResponse
     {
-        $emp = Employee::create($request->only(['name','surname', 'patronymic', 'sex', 'salary']));
+        $emp = Employee::create($request->only(['name', 'surname', 'patronymic', 'sex', 'salary']));
         $emp->departments()->attach($request->department_id);
         return redirect()->route('employee.index')->with('success', 'Сотрудник успешно добавлен');
     }
@@ -47,7 +49,8 @@ class EmployeeController extends Controller
      * @param Employee $employee
      * @return Application|Factory|View
      */
-    public function edit(Employee $employee){
+    public function edit(Employee $employee)
+    {
         $departments = DB::table('departments')->get();
         return view('employee.edit', compact('employee', 'departments'));
     }
@@ -59,12 +62,17 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, Employee $employee): RedirectResponse
     {
-        $employee->update($request->only(['name', 'first_name', 'last_name', 'sex', 'salary']));
+        $employee->update($request->only(['name', 'surname', 'patronymic', 'sex', 'salary']));
         $employee->departments()->sync($request->input(['department_id']));
-        return redirect()->route( 'employee.index')->with('info', 'Редактирование добавлено');
+        return redirect()->route('employee.index')->with('info', 'Редактирование добавлено');
     }
 
-    public function show(){}
+    /**
+     *  Display the specified resource.
+     */
+    public function show()
+    {
+    }
 
     /**
      * @param Employee $employee

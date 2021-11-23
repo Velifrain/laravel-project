@@ -10,10 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Employee extends Model
 {
     use HasFactory;
+
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
         'name', 'surname', 'patronymic', 'sex', 'salary'

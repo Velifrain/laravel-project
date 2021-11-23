@@ -11,7 +11,9 @@
                 @csrf
                 <div class="form-group">
                     <label for="validationCustom01" class="form-label">Имя отдела</label>
-                    <input type="text" class="form-control @error('name_department') is-invalid @enderror" name="name_department"  value="{{ old('name_department') }}" id="validationCustom01" placeholder="{{ isset($department) ? $department->name : "Введите имя отдела" }}">
+                    <input type="text" class="form-control @error('name_department') is-invalid @enderror"
+                           name="name_department" value="{{ old('name_department') }}" id="validationCustom01"
+                           placeholder="{{ isset($department) ? $department->name : "Введите имя отдела" }}">
                     @error('name_department')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

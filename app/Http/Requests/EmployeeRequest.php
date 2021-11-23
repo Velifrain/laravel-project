@@ -8,21 +8,17 @@ use Illuminate\Foundation\Http\FormRequest;
 class EmployeeRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return string[]
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|max:50',
@@ -30,11 +26,13 @@ class EmployeeRequest extends FormRequest
             'surname' => 'required|max:50',
             'patronymic' => 'max:50',
             'salary' => 'integer|regex:/[^a-zA-Z]+/',
-
         ];
     }
 
-    public function messages()
+    /**
+     * @return string[]
+     */
+    public function messages(): array
     {
         return [
             'name.required' => 'Поле имя являеться обязательным',
@@ -44,7 +42,6 @@ class EmployeeRequest extends FormRequest
             'surname.max' => 'Поле фамилия не должно превышать больше 50 символов',
             'patronymic.max' => 'Поле отчество е должно превышать больше 50 символов',
             'salary.integer' => 'Поле заробатная плата может быть только числом',
-
         ];
     }
 }

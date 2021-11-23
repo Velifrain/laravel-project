@@ -27,46 +27,41 @@
 
         <table class="table mt-5">
             @if(count($departments) >= 1)
-            <thead>
+                <thead>
 
-            <tr>
-                <th scope="col">Название отдела</th>
-                <th scope="col">Кол. сотрудников</th>
-                <th scope="col">Макс. зп сотрудника</th>
-                <th scope="col">Редактир.</th>
-            </tr>
-
-            </thead>
-            <tbody>
-            @foreach($departments as $department)
                 <tr>
-                    <td>{{ $department->name_department }}</td>
-                    <td>{{ $department->count_em }}</td>
-{{--                    <td>{{ $department->employees }}</td>--}}
-                    <td>${{ $department->max_s }}</td>
-                    <td>
-                        <form action="{{ route('department.destroy',$department->id) }}" method="POST">
-
-                            <a class="btn btn-primary" href="{{ route('department.edit',$department->id) }}">Редактировать</a>
-
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger">Удалить</button>
-                        </form>
-                    </td>
+                    <th scope="col">Название отдела</th>
+                    <th scope="col">Кол. сотрудников</th>
+                    <th scope="col">Макс. зп сотрудника</th>
+                    <th scope="col">Редактир.</th>
                 </tr>
-            @endforeach
-            </tbody>
+
+                </thead>
+                <tbody>
+                @foreach($departments as $department)
+                    <tr>
+                        <td>{{ $department->name_department }}</td>
+                        <td>{{ $department->count_em }}</td>
+                        {{--                    <td>{{ $department->employees }}</td>--}}
+                        <td>${{ $department->max_s }}</td>
+                        <td>
+                            <form action="{{ route('department.destroy',$department->id) }}" method="POST">
+                                <a class="btn btn-primary" href="{{ route('department.edit',$department->id) }}">Редактировать</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
             @else
-            <p>Информация отсуствует</p>
+                <p>Информация отсуствует</p>
             @endif
         </table>
-            <br>
+        <br>
         <div class="float-right justify-content-center">
             {!! $departments->links() !!}
         </div>
-
     </div>
-
 @endsection
